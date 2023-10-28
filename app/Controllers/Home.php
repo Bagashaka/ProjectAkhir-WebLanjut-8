@@ -6,16 +6,8 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('dashboard_pasien');
+        return view('welcome_message');
     }
 
-    public function profile($nama="", $umurPasien="", $alammatPasien=""){
-        $data = [
-            'nama' => 'Bagas Muhammad Shaka',
-            'umurPasien' => 20,
-            'alamatPasien' => 'Kampung Baru' 
-        ];
 
-        return view('dashboard_pasien', $data);
-    }
 }
