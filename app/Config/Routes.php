@@ -4,6 +4,7 @@ use App\Controllers\DashPasienController;
 use App\Controllers\Home;
 use App\Controllers\PasienController;
 use CodeIgniter\Router\RouteCollection;
+use App\Controllers\AdminController;
 
 /**
  * @var RouteCollection $routes
@@ -11,3 +12,4 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('pasien/(:any)', [DashPasienController::class, 'show']);
 $routes->get('/dashdok', 'Home::dashdok');
+$routes->get('/admin', 'AdminController::admin');
