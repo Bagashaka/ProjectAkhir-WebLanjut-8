@@ -9,5 +9,10 @@ class Home extends BaseController
         return view('welcome_message');
     }
 
+    public function dashdok()
+    {
+        return view('dashboard_dokter');
+    }
+
 
 }
