@@ -10,3 +10,4 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('pasien/(:any)', [DashPasienController::class, 'show']);
+$routes->get('/dashdok', 'Home::dashdok');
