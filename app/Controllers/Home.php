@@ -14,5 +14,14 @@ class Home extends BaseController
         return view('dashboard_dokter');
     }
 
+    public function signin()
+    {
+        return view('login');
+    }
+    public function register()
+    {
+        return view('register');
+    }
+
 
 }
