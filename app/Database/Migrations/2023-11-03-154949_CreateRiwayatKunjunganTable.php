@@ -20,24 +20,22 @@ class CreateRiwayatKunjunganTable extends Migration
                 'constraint'=> 5,
                 'unsigned'=> true,
             ],
-            'diagnosa' => [
-                'type'=>'VARCHAR',
-                'constraint' => 255,
+            'id_dokter'=> [
+                'type'=> 'INT',
+                'constraint'=> 5,
+                'unsigned'=> true,
             ],
-            'resep_obat'=> [
-                'type'=>'VARCHAR',
-                'constraint' => 100,
-            ],
-            'catatan_medis'=>[
-                'type'           => 'VARCHAR',
-                'constraint'     => 100,
+            'id_rekam_medis'=> [
+                'type'=> 'INT',
+                'constraint'=> 5,
+                'unsigned'=> true,
             ],
             'tanggal_kunjungan'=> [
                 'type'=> 'DATE',
             ],
             'validasi_kunjungan'=>[
-                'type'=> 'CHAR',
-                'constraint'     => 1,
+                'type'=> 'BOOL',
+                'default'=> false,
             ],
             'created_at' => [
                 'type'=>'DATETIME',
@@ -50,17 +48,18 @@ class CreateRiwayatKunjunganTable extends Migration
             'deleted_at' => [
                 'type'=>'DATETIME',
                 'null' => true,
-            ],        
-          ]);
-    
-          $this->forge->addKey('id', true, true);
-          $this->forge->addForeignKey('id_pasien', 'pasien', 'id');
-          $this->forge->createTable('riwayatKunjungan');
-      
+            ],
+        ]);
+
+        $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('id_pasien', 'pasien', 'id', 'CASCADE', 'CASCADE', 'fk_kunjungan_pasien');
+        $this->forge->addForeignKey('id_dokter', 'dokter', 'id', 'CASCADE', 'CASCADE', 'fk_dokter');
+        $this->forge->addForeignKey('id_rekam_medis', 'rekam_medis', 'id', 'CASCADE', 'CASCADE', 'fk_rekam_medis');
+        $this->forge->createTable('riwayat_kunjungan');
     }
 
     public function down()
     {
-        $this->forge->dropTable('riwayatKunjungan', true);
+        $this->forge->dropTable('riwayat_kunjungan', true);
     }
 }

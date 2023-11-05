@@ -21,7 +21,7 @@ class PasienModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_pasien', 'alamat_pasien', 'umur_pasien', 'nomor_kontak', 'username', 'password', 'validasi'];
+    protected $allowedFields    = ['nama_pasien', 'alamat_pasien', 'tanggal_lahir', 'nomor_kontak', 'validasi'];
 
     // Dates
     protected $useTimestamps = true;

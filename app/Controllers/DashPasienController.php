@@ -18,7 +18,7 @@ class DashPasienController extends BaseController
     }
 
     public function index(){
-
+        return view('dashboard_pasien');
     }
 
     public function show($id)

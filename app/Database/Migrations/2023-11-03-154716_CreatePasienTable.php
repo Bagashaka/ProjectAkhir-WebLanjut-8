@@ -23,25 +23,16 @@ class CreatePasienTable extends Migration
                   'type'=>'VARCHAR',
                   'constraint' => 100,
               ],
-              'umur_pasien'=>[
-                  'type'           => 'INT',
-                  'constraint'     => 2,
+              'tanggal_lahir'=>[
+                  'type'           => 'DATE',
               ],
               'nomor_kontak'=> [
                   'type'=> 'INT',
                   'constrain'=> 13,
               ],
-              'username'=> [
-                'type'=> 'VARCHAR',
-                'constraint' => 30,
-              ],
-              'password'=> [
-                'type'=> 'VARCHAR',
-                'constraint' => 30,
-              ],
               'validasi'=> [
-                'type'=> 'CHAR',
-                'constraint' => 1,
+                'type'=> 'BOOL',
+                'default'=> false,
               ],
               'created_at' => [
                   'type'=>'DATETIME',

@@ -8,21 +8,21 @@ class KunjunganModel extends Model
 {
     public function getKunjungan($id = null){
         if ($id !=null) {
-            return $this->select('riwayatkunjungan.id, riwayatkunjungan.id_pasien, riwayatkunjungan.diagnosa, riwayatkunjungan.resep_obat, riwayatkunjungan.catatan_medis, riwayatkunjungan.tanggal_kunjungan, riwayatkunjungan.validasi_kunjungan, pasien.nama_pasien')
-            ->join('pasien','pasien.id=riwayatkunjungan.id_pasien')->find($id);
+            return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, pasien.nama_pasien, dokter.nama_dokter, rekam_medis.keluhan, rekam_medis.diagnosa, rekam_medis.resep_obat ')
+            ->join('pasien','pasien.id=riwayat_kunjungan.id_pasien')->join('dokter','dokter.id=riwayat_kunjungan.id_dokter')->join('rekam_medis', 'rekam_medis.id=riwayat_kunjungan.id_rekam_medis','left')->find($id);
         }
-        return $this->select('riwayatkunjungan.id,riwayatkunjungan.id_pasien, riwayatkunjungan.diagnosa, riwayatkunjungan.resep_obat, riwayatkunjungan.catatan_medis, riwayatkunjungan.tanggal_kunjungan, riwayatkunjungan.validasi_kunjungan, pasien.nama_pasien')
-            ->join('pasien', 'pasien.id = riwayatkunjungan.id_pasien')->find();
+        return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, pasien.nama_pasien, dokter.nama_dokter, rekam_medis.keluhan, rekam_medis.diagnosa, rekam_medis.resep_obat ')
+            ->join('pasien','pasien.id=riwayat_kunjungan.id_pasien')->join('dokter','dokter.id=riwayat_kunjungan.id_dokter')->join('rekam_medis', 'rekam_medis.id=riwayat_kunjungan.id_rekam_medis','left')->find();
     }
 
     protected $DBGroup          = 'default';
-    protected $table            = 'riwayatkunjungan';
+    protected $table            = 'riwayat_kunjungan';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['diagnosa','resep_obat', 'catatan_medis', 'tanggal_kunjungan', 'id_pasien','validasi_kunjungan'];
+    protected $allowedFields    = ['id_pasien', 'id_dokter','id_rekam_medis','tanggal_kunjungan','validasi_kunjungan'];
 
     // Dates
     protected $useTimestamps = true;

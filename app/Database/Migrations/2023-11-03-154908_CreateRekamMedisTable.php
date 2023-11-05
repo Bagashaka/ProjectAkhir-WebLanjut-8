@@ -20,12 +20,9 @@ class CreateRekamMedisTable extends Migration
                 'constraint'=> 5,
                 'unsigned'=> true,
             ],
-            'nama_dokter'=>[
-                'type'  =>'VARCHAR',
-                'constraint'=>'255',
-            ],
-            'tanggal_pemeriksaan'=> [
-                'type'=> 'DATE',
+            'keluhan' => [
+                'type'=>'VARCHAR',
+                'constraint' => 255,
             ],
             'diagnosa' => [
                 'type'=>'VARCHAR',
@@ -35,9 +32,13 @@ class CreateRekamMedisTable extends Migration
                 'type'=>'VARCHAR',
                 'constraint' => 100,
             ],
+            'tanggal_pemeriksaan'=> [
+                'type'=> 'DATE',
+            ],
             
         ]);
         $this->forge->addKey('id',true, true);
+        $this->forge->addForeignKey('id_pasien', 'pasien', 'id', 'CASCADE', 'CASCADE', 'fk_pasien');
         $this->forge->createTable('rekam_medis');
     }
 

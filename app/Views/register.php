@@ -16,41 +16,55 @@
             <div id="layoutAuthentication_content">
                 <main>
                     <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Register</h3></div>
+                        <div class="row justify-content-center ">
+                            <div class="col-lg-6">
+                                <div class="card shadow-lg border-0 rounded-lg mt-2">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4"><?=lang('Auth.register')?></h3></div>
                                     <div class="card-body">
-                                        <form>
+
+                                        <?= view('Myth\Auth\Views\_message_block') ?>
+
+                                        <form action="<?= url_to('register') ?>" method="post">
+                                         <?= csrf_field() ?>
+
                                         <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail"><i class="fa fa-user" aria-hidden="true"></i> Username</label>
+                                            <input type="email" class="form-control <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" 
+                                                   name="email" placeholder="<?=lang('Auth.email')?>" value="<?= old('email') ?>">
+                                            <small id="emailHelp" class="form-text text-muted"><?=lang('Auth.weNeverShare')?></small>
+                                            <label for="email"><i class="fa fa-envelope me-2" aria-hidden="true"></i><?=lang('Auth.email')?></label>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input type="text"  class="form-control<?php if (session('errors.username')) : ?>is-invalid<?php endif ?>" 
+                                                   name="username" placeholder="<?=lang('Auth.username')?>" value="<?= old('username') ?>">
+                                            <label for="username"><i class="fa fa-user me-2" aria-hidden="true"></i><?=lang('Auth.username')?></label>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input type="password" name="password" class="form-control<?php if (session('errors.password')) : ?>is-invalid<?php endif ?>"
+                                                       placeholder="<?=lang('Auth.password')?>" autocomplete="off">
+                                                <label for="password"><i class="fa fa-lock me-2" aria-hidden="true"></i><?=lang('Auth.password')?></label>
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail"><i class="fa fa-envelope" aria-hidden="true"></i>  Email Address</label>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                                                        <label for="inputPassword"><i class="fa fa-lock" aria-hidden="true"></i>  Password</label>
-                                                    </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                <input type="password" name="pass_confirm" class="form-control <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>"
+                                                       placeholder="<?=lang('Auth.repeatPassword')?>" autocomplete="off">
+                                                <label for="pass_confirm"><i class="fa fa-lock me-2" aria-hidden="true"></i><?=lang('Auth.repeatPassword')?></label>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm"><i class="fa fa-lock" aria-hidden="true"></i>  Confirm Password</label>
-                                                    </div>
-                                                </div>
                                             </div>
-                                            <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.php">Register Now</a></div>
-                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 mb-0">
+                                            <div class="d-grid"><button type="submit" class="btn btn-primary btn-block"><?=lang('Auth.register')?></button></div>
+                                        </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small">Already have an account? <br> <a href="login.php">Login</a></div>
+                                        <div class="small"><?=lang('Auth.alreadyRegistered')?><br> <a href="<?= url_to('login') ?>"><?=lang('Auth.signIn')?></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +73,7 @@
                 </main>
             </div>
             <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-1 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; RSUD Tadika Mesra 2023</div>
