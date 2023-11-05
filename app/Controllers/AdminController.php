@@ -9,12 +9,12 @@ use App\Models\AdminModel;
 class AdminController extends BaseController
 {
     public function index(){
-        //
+        return view('dashboard_admin');
     }
 
     public function admin()
     {
-        return view('dashboard_admin');
+   
     }
 
 }

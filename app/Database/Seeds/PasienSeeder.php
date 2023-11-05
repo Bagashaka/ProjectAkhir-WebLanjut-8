@@ -14,11 +14,9 @@ class PasienSeeder extends Seeder
         $pasienModel->save([
             'nama_pasien' => 'Bagas Muhammad Shaka',
             'alamat_pasien' => 'Gg. Surya Kencana III',
-            'umur_pasien'=> '20',
+            'tanggal_lahir'=> '2003-07-08',
             'nomor_kontak'=> '085796125787',
-            'username' => 'Bagashaka',
-            'password'=> 'Bagashaka',
-            'validasi' => 'Y'
+            'validasi' => true
         ]);
     }
 }

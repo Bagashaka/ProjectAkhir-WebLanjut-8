@@ -15,24 +15,26 @@ class CreateDokterTable extends Migration
                 'unsigned'      => true,
                 'auto_increment'=>true,
             ],
-            'nama'=>[
+            'nama_dokter'=>[
                 'type'  =>'VARCHAR',
                 'constraint'=>'255',
-            ],
-            'sip'=>[
-                'type'  =>'INT',
-                'constraint'=>'50',
             ],
             'spesialisasi'=>[
                 'type'  =>'VARCHAR',
                 'constraint'=>'255',
             ],
-            
-            'jadwal_prak'=>[
+            'created_at' => [
                 'type'=>'DATETIME',
-                'null'=>true,
+                'null' => true,
             ],
-            
+            'updated_at' => [
+                'type'=>'DATETIME',
+                'null' => true,
+            ],
+            'deleted_at' => [
+                'type'=>'DATETIME',
+                'null' => true,
+            ],       
         ]);
         $this->forge->addKey('id',true, true);
         $this->forge->createTable('dokter');
