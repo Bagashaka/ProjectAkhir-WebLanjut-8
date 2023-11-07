@@ -22,6 +22,10 @@ class Home extends BaseController
     {
         return view('register');
     }
+    public function landing_page()
+    {
+        return view('landing_page');
+    }
 
 
 }

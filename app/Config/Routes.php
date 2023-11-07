@@ -21,3 +21,4 @@ $routes->get('/pasien', [DashPasienController::class, 'index']);
 $routes->get('pasien/(:any)', [DashPasienController::class, 'show']);
 $routes->get('/signin', 'Home::signin');
 $routes->get('/register', 'Home::register');
+$routes->get('/landing_page', 'Home::landing_page');
