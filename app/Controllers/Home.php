@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('home_page');
+        return view('landing_page');
     }
 
     public function dashdok()
