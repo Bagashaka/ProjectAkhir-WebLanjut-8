@@ -5,35 +5,29 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\KunjunganModel;
 use App\Models\PasienModel;
+use App\Models\UserModel;
 
 class DashPasienController extends BaseController
 {
 
     public $pasienModel;
     public $kunjunganModel;
+    public $userModel;
 
     public function __construct(){
         $this->pasienModel = new PasienModel();
         $this->kunjunganModel= new KunjunganModel();
+        $this->userModel = new UserModel();
     }
 
     public function index(){
-        return view('dashboard_pasien');
-    }
+        $pasien = $this->userModel->getPasien(user_id());
 
-    public function show($id)
-    {
-
-        $pasien = $this->pasienModel->getPasien($id);
-        $kunjungan = $this->kunjunganModel->getKunjungan();
-        // dd($pasien);
         $data = [
             'pasien' => $pasien,
-            'kunjungan' => $kunjungan,
-            'title' => 'Dashboard Pasien',
         ];
-
-        return view('dashboard_pasien', $data);
+        // dd($data);
+        return view('profile_page' , $data);
     }
 
 }

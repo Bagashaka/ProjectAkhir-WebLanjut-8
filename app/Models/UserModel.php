@@ -12,12 +12,47 @@ use Myth\Auth\Entities\User;
  */
 class UserModel extends Model
 {
+
+    public function getPasien($id = null){
+        if($id != null){
+            return $this->select('users.id, users.email, users.username, pasien.id_users, pasien.nama_pasien, pasien.alamat_pasien, pasien.tanggal_lahir, pasien.nomor_kontak, pasien.validasi')
+            ->join('pasien', 'pasien.id_users = users.id')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->find($id);
+        }
+        return $this->select('users.id, users.email, users.username, pasien.id_users, pasien.nama_pasien, pasien.alamat_pasien, pasien.tanggal_lahir, pasien.nomor_kontak, pasien.validasi')
+            ->join('pasien', 'pasien.id_users = users.id')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->findAll();
+    }
+
+    public function getDokter($id = null){
+        if($id != null){
+            return $this->select('users.id, users.email, users.username, dokter.id_users, dokter.nama_dokter, dokter.nomor_kontak, dokter.spesialisasi')
+            ->join('dokter', 'dokter.id_users = users.id')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->find($id);
+        }
+        return $this->select('users.id, users.email, users.username, dokter.id_users, dokter.nama_dokter, dokter.nomor_kontak, dokter.spesialis')
+            ->join('dokter', 'dokter.id_users = users.id')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->findAll();
+    }
+
+    public function updateAdmin($data, $id){
+        return $this->update($id, $data);
+    }
+
     protected $table          = 'users';
     protected $primaryKey     = 'id';
     protected $returnType     = 'App\Entities\User';
     protected $useSoftDeletes = true;
     protected $allowedFields  = [
-        'email', 'username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
+        'email','nama_admin','umur_admin', 'alamat_admin','username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
         'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at',
     ];
     protected $useTimestamps   = true;

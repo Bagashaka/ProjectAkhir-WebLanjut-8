@@ -4,16 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AdminModel extends Model
+class MedisModel extends Model
 {
-    protected $DBGroup          = 'default';
-    protected $table            = 'admins';
+    protected $table            = 'rekam_medis';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_pasien', 'nama_dokter', 'tanggal_pemeriksaan', 'diagnosa', 'resep_obat'];
+    protected $allowedFields    = [];
 
     // Dates
     protected $useTimestamps = false;
@@ -38,12 +37,4 @@ class AdminModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function getAdmin($id = null){
-        if($id != null){
-            return $this->select('admin.*')
-                ->find($id);
-        }
-        return $this->findAll();
-    }
 }

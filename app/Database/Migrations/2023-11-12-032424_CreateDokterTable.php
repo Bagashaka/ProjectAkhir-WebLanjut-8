@@ -15,9 +15,18 @@ class CreateDokterTable extends Migration
                 'unsigned'      => true,
                 'auto_increment'=>true,
             ],
+            'id_users'=> [
+                'type'=> 'INT',
+                'constraint'=> 5,
+                'unsigned'=> true,
+              ],
             'nama_dokter'=>[
                 'type'  =>'VARCHAR',
                 'constraint'=>'255',
+            ],
+            'nomor_kontak'=> [
+                'type'=> 'VARCHAR',
+                'constraint'=> '14',
             ],
             'spesialisasi'=>[
                 'type'  =>'VARCHAR',
@@ -37,6 +46,7 @@ class CreateDokterTable extends Migration
             ],       
         ]);
         $this->forge->addKey('id',true, true);
+        $this->forge->addForeignKey('id_users', 'users', 'id', 'CASCADE', 'CASCADE', 'fk_users_dokter');
         $this->forge->createTable('dokter');
     }
 

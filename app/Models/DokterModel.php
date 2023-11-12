@@ -4,24 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PasienModel extends Model
+class DokterModel extends Model
 {
-
-    // public function getPasien($id = null){
-    //     if($id !=null){
-    //         return $this->select('pasien.*')->find($id);
-    //     }
-    //     return $this->findAll();
-    // }
-    
-    protected $DBGroup          = 'default';
-    protected $table            = 'pasien';
+    protected $table            = 'dokter ';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_pasien', 'alamat_pasien', 'tanggal_lahir', 'nomor_kontak', 'validasi'];
+    protected $allowedFields    = ['nama_dokter', 'nomor_kontak', 'spesialis'];
 
     // Dates
     protected $useTimestamps = true;
