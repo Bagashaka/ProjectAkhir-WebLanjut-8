@@ -4,17 +4,24 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\MedisModel;
-use App\Models\AdminModel;
-
+use App\Models\KunjunganModel;
+use App\Models\UserModel;
 class AdminController extends BaseController
 {
-    public function index(){
-        return view('dashboard_admin');
+    public $medisModel;
+    public $adminModel;
+    public $kunjunganModel;
+    public function __construct(){
+        $this->adminModel = new UserModel();
+        $this->kunjunganModel = new KunjunganModel();
+        $this->medisModel = new MedisModel();
     }
 
-    public function admin()
-    {
-   
+    protected $helpers=['form'];
+
+    public function index(){
+
+        return view('profile_page');
     }
 
 }
