@@ -53,7 +53,49 @@
 <?= $this->extend('layouts/app');?>
 <?= $this->section('content') ?>
 
-ini dokter
+<div class="col-12">
+			<!-- Page title -->
+			<div class="my-3 mx-3">
+				<h3>My Profile</h3>
+				<hr>
+			</div>
+			<!-- Form START -->
+				<div class="row mb-1 gx-5">
+					<!-- Contact detail -->
+					<div class="col-xxl-8 mb-5 mb-xxl-0">
+						<div class="bg-secondary-soft px-4 py-4 rounded">
+							<div class="row g-3">
+								<h4 class="mb-2 mt-0">Detail Kontak</h4>
+								<!-- Nama -->
+								<div class="col-md-6">
+									<label class="form-label">Nama *</label>
+									<input type="text" class="form-control" disabled aria-label="Nama" value="<?= $dokter->nama_dokter;?>">
+								</div>
+								<!-- Username -->
+								<div class="col-md-6">
+									<label class="form-label">Username *</label>
+									<input type="text" class="form-control" disabled aria-label="Username" value="<?= $dokter->username;?>">
+								</div>
+								<!-- Nomor Kontak -->
+								<div class="col-md-6">
+									<label class="form-label">Nomor Kontak *</label>
+									<input type="text" class="form-control" disabled aria-label="Nomor Kontak" value="<?= $dokter->nomor_kontak;?>">
+								</div>
+								<!-- Spesialis -->
+								<div class="col-md-6">
+									<label class="form-label">Spesialisasi *</label>
+									<input type="text" class="form-control" disabled aria-label="Alamat" value="<?= $dokter->spesialisasi;?>">
+								</div>
+								<!-- Email -->
+								<div class="col-md-6">
+									<label class="form-label">Email *</label>
+									<input type="text" class="form-control" disabled value="<?= $dokter->email;?>">
+								</div>
+							</div> <!-- Row END -->
+                        </div>    
+                    </div>    
+                </div>    
+            </div>
 
 <?=$this->endSection()?>
 
