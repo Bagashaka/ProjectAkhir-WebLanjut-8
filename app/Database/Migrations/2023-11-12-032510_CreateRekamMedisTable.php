@@ -6,7 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class CreateRekamMedisTable extends Migration
 {
-    public function up()
+    public function up() 
     {
         $this->forge->addField([
             'id'=>[
@@ -38,7 +38,7 @@ class CreateRekamMedisTable extends Migration
             
         ]);
         $this->forge->addKey('id',true, true);
-        $this->forge->addForeignKey('id_pasien', 'pasien', 'id', 'CASCADE', 'CASCADE', 'fk_pasien');
+        $this->forge->addForeignKey('id_pasien', 'users', 'id', 'CASCADE', 'CASCADE', 'fk_pasien');
         $this->forge->createTable('rekam_medis');
     }
 

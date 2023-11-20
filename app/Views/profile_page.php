@@ -1,12 +1,27 @@
 <?php if (in_groups('admin')):?>
 
 <?= $this->extend('layouts/app');?>
-<?= $this->section('content') ?>
+<?= $this->section('content') ?> 
 		<div class="col-12">
-			<!-- Page title -->
+			<!-- Page title --> 
 			<div class="my-3 mx-3">
 				<h3>My Profile</h3>
 				<hr>
+				<?php if(session()->getFlashdata('success')) : ?>
+					<div class="alert alert-success" role="alert">
+						<?= session()->getFlashdata('success')?>
+					</div>
+				<?php endif;?>
+				<?php if(session()->getFlashdata('warning')):?>
+					<div class="alert alert-danger" role="alert">
+						<?= session()->getFlashdata('warning')?>
+					</div>
+				<?php endif;?>
+				<?php if(session()->getFlashdata('error')):?>
+					<div class="alert alert-danger" role="alert">
+						<?= session()->getFlashdata('error')?>
+					</div>
+				<?php endif;?>
 			</div>
 			<!-- Form START -->
 				<div class="row mb-1 gx-5">
@@ -39,6 +54,9 @@
 								<div class="col-md-6">
 									<label class="form-label">Email *</label>
 									<input type="text" class="form-control" disabled value="<?= user()->email?>">
+								</div>
+								<div class="col-md-8 mt-3">
+									<a href="<?=base_url('/admin/profile/edit')?>" class="btn btn-primary">Edit Profil</a>
 								</div>
 							</div> <!-- Row END -->
                         </div>    
@@ -90,6 +108,10 @@
 								<div class="col-md-6">
 									<label class="form-label">Email *</label>
 									<input type="text" class="form-control" disabled value="<?= $dokter->email;?>">
+								</div>
+								<!-- Tombol Edit -->
+								<div class="col-md-8 mt-3">
+									<a href="<?=base_url('/dokter/profile/edit')?>" class="btn btn-primary">Edit Profil</a>
 								</div>
 							</div> <!-- Row END -->
                         </div>    
@@ -146,19 +168,25 @@
 								<!-- Validasi -->
 								<div class="col-md-6">
 									<label class="form-label">Validasi *</label>
-									<input type="text" class="form-control" disabled aria-label="Validasi" value="<?=$pasien->validasi;?>">
+									<?php
+										$statusValidasi = ($pasien->validasi == 0) ? 'Belum Tervalidasi' : 'Tervalidasi';
+									?>
+									<input type="text" class="form-control" disabled aria-label="Validasi" value="<?= $statusValidasi; ?>">
 								</div>
 								<!-- Email -->
 								<div class="col-md-6">
 									<label class="form-label">Email *</label>
 									<input type="text" class="form-control" disabled value="<?=$pasien->email;?>">
 								</div>
+
+								<!-- Tombol Edit -->
+								<div class="col-md-8 mt-3">
+									<a href="<?=base_url('/pasien/profile/edit')?>" class="btn btn-primary">Edit Profil</a>
+								</div>
 							</div> <!-- Row END -->
                         </div>    
                     </div>    
                 </div>    
  </div>
-
-
 <?=$this->endSection()?>
 <?php endif; ?>

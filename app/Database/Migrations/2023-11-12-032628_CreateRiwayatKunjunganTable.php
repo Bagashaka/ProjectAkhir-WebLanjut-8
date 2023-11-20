@@ -52,8 +52,8 @@ class CreateRiwayatKunjunganTable extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_pasien', 'pasien', 'id', 'CASCADE', 'CASCADE', 'fk_kunjungan_pasien');
-        $this->forge->addForeignKey('id_dokter', 'dokter', 'id', 'CASCADE', 'CASCADE', 'fk_dokter');
+        $this->forge->addForeignKey('id_pasien', 'users', 'id', 'CASCADE', 'CASCADE', 'fk_kunjungan_pasien');
+        $this->forge->addForeignKey('id_dokter', 'users', 'id', 'CASCADE', 'CASCADE', 'fk_dokter');
         $this->forge->addForeignKey('id_rekam_medis', 'rekam_medis', 'id', 'CASCADE', 'CASCADE', 'fk_rekam_medis');
         $this->forge->createTable('riwayat_kunjungan');
     }

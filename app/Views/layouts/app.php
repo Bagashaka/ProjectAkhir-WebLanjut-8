@@ -47,9 +47,9 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Riwayat Kunjungan
                             </a>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Registrasi Pasien Baru
+                            <a class="nav-link" href="/users">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-circle"></i></div>
+                                Manejemen User 
                             </a>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -68,7 +68,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?= base_url('admin/profile');?>">Lihat Profile</a>
-                                    <a class="nav-link" href="#">Edit Profile</a>
+                                    <a href="<?=base_url('/admin/profile/edit')?>" class="nav-link">Edit Profil</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="<?= base_url('logout');?>">
@@ -177,7 +177,8 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?= base_url('dokter/profile');?>">Lihat Profile</a>
-                                    <a class="nav-link" href="#">Edit Profile</a>
+                                    <a href="<?=base_url('/dokter/profile/edit')?>" class="nav-link">Edit Profil</a>
+                                
                                     </nav>
                             </div>
                             <a class="nav-link" href="<?= base_url('logout'); ?>">
@@ -290,7 +291,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?= base_url('pasien/profile');?>">Lihat Profile</a>
-                                    <a class="nav-link" href="#">Edit Profile</a>
+                                    <a class="nav-link" href="<?=base_url('/pasien/profile/edit')?>">Edit Profile</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="<?= base_url('logout');?>">
