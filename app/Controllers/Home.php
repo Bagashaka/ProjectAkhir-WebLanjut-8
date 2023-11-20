@@ -7,20 +7,21 @@ use PSpell\Config;
 
 class Home extends BaseController
 {
+
+    public $userModel;
+    public function __construct()
+    {
+        $this->userModel = new UserModel();
+    }
     public function index(): string
     {
         if(logged_in() && in_groups('admin')){
-            // $users = new UserModel();
-
-            $db = \Config\Database::connect();
-            $builder = $db->table('users');
-            $builder->select('users.id, users.email, users.username, pasien.id_users, pasien.nama_pasien, pasien.alamat_pasien, pasien.tanggal_lahir, pasien.nomor_kontak, pasien.validasi');
-            $builder->join('pasien', 'pasien.id_users = users.id');
-            $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-            $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id ');
-            $query = $builder->get();
+            
+            $dataPasien = $this->userModel->withGroup('pasien')->getPasien();
+            $dataDokter = $this->userModel->withGroup('dokter')->getDokter();
             $data = [
-                'users' => $query->getResult(),
+                'users' => $dataPasien,
+                'dokters' => $dataDokter
             ];
             // dd($data);
             return view('home_page',$data);

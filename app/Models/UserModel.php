@@ -15,29 +15,61 @@ class UserModel extends Model
 
     public function getPasien($id = null){
         if($id != null){
-            return $this->select('users.id, users.email, users.username, pasien.id_users, pasien.nama_pasien, pasien.alamat_pasien, pasien.tanggal_lahir, pasien.nomor_kontak, pasien.validasi')
-            ->join('pasien', 'pasien.id_users = users.id')
+            return $this->select('users.id, users.email, users.username, users.nama_pasien, users.alamat_pasien, users.tanggal_lahir, users.nomor_kontak, users.validasi')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->where('auth_groups_users.group_id', 2)
+            ->find($id);
+        }
+            return $this->select('users.id, users.email, users.username, users.nama_pasien, users.alamat_pasien, users.tanggal_lahir, users.nomor_kontak, users.validasi')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->where('auth_groups_users.group_id', 2)
+            ->findAll();
+    }
+
+    public function updatePasien($data, $id){
+        return $this->update($id, $data);
+    }
+
+    public function getDokter($id = null){
+        if($id != null){
+            return $this->select('users.id, users.email, users.username,  users.nama_dokter, users.nomor_kontak, users.spesialisasi')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->where('auth_groups_users.group_id', 3)
+            ->find($id);
+        }
+        return $this->select('users.id, users.email, users.username, users.nama_dokter, users.nomor_kontak, users.spesialisasi')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->where('auth_groups_users.group_id', 3)
+            ->findAll();
+    }
+
+    public function getAdmin($id = null){
+        if($id != null){
+            return $this->select('users.id, users.email, users.nama_admin, users.umur_admin, users.alamat_admin, users.username')
             ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
             ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
             ->find($id);
         }
-        return $this->select('users.id, users.email, users.username, pasien.id_users, pasien.nama_pasien, pasien.alamat_pasien, pasien.tanggal_lahir, pasien.nomor_kontak, pasien.validasi')
-            ->join('pasien', 'pasien.id_users = users.id')
+        return $this->select('users.id, users.email, users.nama_admin, users.umur_admin, users.alamat_admin, users.username')
             ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
             ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
             ->findAll();
     }
 
-    public function getDokter($id = null){
+   
+
+    public function getUsers($id = null){
         if($id != null){
-            return $this->select('users.id, users.email, users.username, dokter.id_users, dokter.nama_dokter, dokter.nomor_kontak, dokter.spesialisasi')
-            ->join('dokter', 'dokter.id_users = users.id')
+            return $this->select('users.id, users.email, users.username, auth_groups.name')
             ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
             ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
             ->find($id);
         }
-        return $this->select('users.id, users.email, users.username, dokter.id_users, dokter.nama_dokter, dokter.nomor_kontak, dokter.spesialis')
-            ->join('dokter', 'dokter.id_users = users.id')
+        return $this->select('users.id, users.email, users.username, auth_groups.name')
             ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
             ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
             ->findAll();
@@ -47,12 +79,16 @@ class UserModel extends Model
         return $this->update($id, $data);
     }
 
+    public function deleteAdmin($id){
+        return $this->delete($id);
+    }
+
     protected $table          = 'users';
     protected $primaryKey     = 'id';
     protected $returnType     = 'App\Entities\User';
     protected $useSoftDeletes = true;
     protected $allowedFields  = [
-        'email','nama_admin','umur_admin', 'alamat_admin','username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
+        'email','nama_admin','umur_admin', 'alamat_admin','nama_pasien', 'alamat_pasien', 'tanggal_lahir','nomor_kontak','validasi','nama_dokter','spesialisasi','username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
         'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at',
     ];
     protected $useTimestamps   = true;
