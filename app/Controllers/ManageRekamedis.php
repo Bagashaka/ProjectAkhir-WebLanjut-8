@@ -62,5 +62,40 @@ class ManageRekamedis extends BaseController
         return redirect()->to('/dokter/rekamedis');
     }
 
+    public function edit($id){
+        $data_medis = $this->medisModel->getRekam($id);
+
+        $data = [
+           'medis' => $data_medis,
+           'users' => $this->userModel->getPasien(),
+           'validation' => \Config\Services::validation()
+        ];
+
+        return view('edit_rekamedis', $data);
+   }
+
+   public function update($id){
+       $data = [ 
+           'keluhan' => $this->request->getVar('keluhan'),
+           'diagnosa' => $this->request->getVar('diagnosa'),
+           'resep_obat' => $this->request->getVar('resep_obat'),
+           'tanggal_pemeriksaan' => $this->request->getVar('tanggal_pemeriksaan'),
+           'id_pasien' => $this->request->getVar('nama_pasien'),
+       ];
+
+       $this->builder->where('id', $id);
+       $result = $this->builder->update($data);
+       if(!$result){
+           session()->setFlashdata('error', 'Gagal Mengedit User');
+           return redirect()->back()->withInput()
+               ->with('error', 'Gagal mengubah data');
+       }
+       else {
+           session()->setFlashdata('success', 'Berhasil Mengubah User');
+           return redirect()->to('/dokter/rekamedis');
+       }
+
+   }
+
     
 }
