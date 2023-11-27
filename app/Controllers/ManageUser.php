@@ -28,6 +28,7 @@ class ManageUser extends BaseController
             'title' => "Manajemen User",
             'result' =>$data_users,
         ];
+        // dd($data);
 
         return view('list_user', $data);
     }
@@ -120,7 +121,7 @@ class ManageUser extends BaseController
         else {
             session()->setFlashdata('success', 'Berhasil Mengubah User');
             return redirect()->to('/');
-        }
+        } 
     }
 
     public function updateDokter($id){

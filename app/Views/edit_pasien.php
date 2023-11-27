@@ -5,7 +5,7 @@
 <div class="col-12">
 			<!-- Page title -->
 			<div class="my-3 mx-3">
-				<h3>My Profile</h3>
+				<h3>Edit Data Pasien</h3>
 				<hr>
 			</div>
 			<!-- Form START -->
@@ -44,7 +44,7 @@
 									<input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required value="<?=$pasien->tanggal_lahir?> ">                                                                                                    
                                 </div>
 								<!-- Nomor Kontak -->
-								<div class="col-md-6">
+								<div class="col-md-6"> 
 									<label for="nomor_kontak" class="form-label">Nomor Kontak *</label>
 									<input type="text" class="form-control" name="nomor_kontak" id="nomor_kontak"  aria-label="Nomor Kontak" required value="<?=$pasien->nomor_kontak?>">                                                          
                                 </div>
@@ -56,7 +56,7 @@
 									</select>
                                 </div>
                                 <div class="col-md-8 mt-3">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                                 <a href="<?=base_url('/')?>" class="btn btn-primary">Back</a>
 								</div>
 							</div> <!-- Row END -->

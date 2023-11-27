@@ -14,7 +14,7 @@ class Home extends BaseController
         $this->userModel = new UserModel();
     }
     public function index(): string
-    {
+    { 
         if(logged_in() && in_groups('admin')){
             
             $dataPasien = $this->userModel->withGroup('pasien')->getPasien();

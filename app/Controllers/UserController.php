@@ -33,6 +33,8 @@ class UserController extends BaseController
         return view('profile_page' , $data);   
     }
 
+
+
     public function edit(){
 
         $dataDokter = $this->userModel->getDokter(user_id());
@@ -63,4 +65,16 @@ class UserController extends BaseController
             return redirect()->to('/dokter/profile');
         }
     }
+
+    public function showPasien(){
+        $data = [
+            'title'  => "Daftar Pasien",
+            'pasien' =>  $this->userModel->withGroup('pasien')->getPasien(),
+
+            ];
+
+        return view('list_pasien', $data);
+
+    }
+
 }

@@ -50,14 +50,10 @@
                             <a class="nav-link" href="/users">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-circle"></i></div>
                                 Manejemen User 
-                            </a>
-                            <a class="nav-link" href="#">
+                            </a>                            
+                            <a class="nav-link" href="<?=base_url('/admin/jadwalpraktik')?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Jadwal Kunjungan
-                            </a>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Jadwal Praktek Dokter
+                                Jadwal Praktik Dokter
                             </a>
                             <div class="sb-sidenav-menu-heading">Account Page</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -79,7 +75,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Admin
+                        <?=user()->username;?>
                     </div>
                 </nav>
             </div>
@@ -155,16 +151,16 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?= base_url('/dokter/pasien/view')?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Daftar Pasien
                             </a>
         
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?= base_url('/dokter/rekamedis');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-kit-medical"></i></div>
                                 Rekam Medis Pasien
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?= base_url('/dokter/jadwal')?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-pen-to-square"></i></div>
                                 Manajemen Jadwal Praktek
                             </a>
@@ -188,7 +184,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Dokter
+                        <?=user()->username;?>
                     </div>
                 </nav>
             </div>
@@ -303,7 +299,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Users
+                        <?=user()->username;?>
                     </div>
                 </nav>
             </div>

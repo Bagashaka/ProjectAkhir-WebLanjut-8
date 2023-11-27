@@ -45,7 +45,7 @@ class UserModel extends Model
             ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
             ->where('auth_groups_users.group_id', 3)
             ->findAll();
-    }
+    } 
 
     public function getAdmin($id = null){
         if($id != null){

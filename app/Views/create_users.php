@@ -4,7 +4,7 @@
 <div class="container-fluid px-4">
     <h1 class="mt-4">Manejemen User</h1>
     <ol class="breadcrum mb-4">
-        <li class="breadcrum-item active">Pengelolaan User</li>
+        <p class="breadcrum-item active">Pengelolaan User</p>
     </ol>
     <div class="card mb-4">
         <div class="card-header">

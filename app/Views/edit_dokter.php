@@ -5,7 +5,7 @@
 <div class="col-12">
 			<!-- Page title -->
 			<div class="my-3 mx-3">
-				<h3>My Profile</h3>
+				<h3>Edit Data Dokter</h3>
 				<hr>
 			</div>
 			<!-- Form START -->
