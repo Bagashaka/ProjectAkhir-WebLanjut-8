@@ -6,13 +6,26 @@ use CodeIgniter\Model;
 
 class MedisModel extends Model
 {
+
+    public function getRekam($id = null)
+    {
+        if($id != null){
+            return $this->select('rekam_medis.id, rekam_medis.id_pasien, rekam_medis.keluhan, rekam_medis.diagnosa, rekam_medis.resep_obat,rekam_medis.tanggal_pemeriksaan, users.nama_pasien')
+                ->join('users', 'users.id = rekam_medis.id_pasien')
+                ->find($id);
+        }    
+            return $this->select('rekam_medis.id, rekam_medis.id_pasien, rekam_medis.keluhan, rekam_medis.diagnosa, rekam_medis.resep_obat,rekam_medis.tanggal_pemeriksaan, users.nama_pasien')
+            ->join('users', 'users.id = rekam_medis.id_pasien')
+            ->findAll();   
+    }
+
     protected $table            = 'rekam_medis';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['id_pasien', 'keluhan', 'diagnosa', 'resep_obat', 'tanggal_pemeriksaan'];
 
     // Dates
     protected $useTimestamps = false;
