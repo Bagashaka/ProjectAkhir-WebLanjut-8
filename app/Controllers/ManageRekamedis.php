@@ -20,7 +20,17 @@ class ManageRekamedis extends BaseController
         $this->builder    = $this->db->table('rekam_medis');
     }
 
-   
+    public function index()
+    {
+        $data_medis = $this->medisModel->getRekam();
+
+        $data = [
+            'title' => 'Manage Rekam Medis',
+            'medis' => $data_medis,
+        ];
+        // dd($data);
+        return view('list_medis', $data);
+    }
     public function create(){
         helper('form');
         $data = [
@@ -51,4 +61,6 @@ class ManageRekamedis extends BaseController
         $this->medisModel->delete($id);
         return redirect()->to('/dokter/rekamedis');
     }
+
+    
 }
