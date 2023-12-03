@@ -6,6 +6,7 @@ use App\Controllers\PasienController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\AdminController;
 use App\Controllers\ManageJadwalPraktik;
+use App\Controllers\ManageKunjungan;
 use App\Controllers\ManageUser;
 use App\Controllers\ManageRekamedis;
 use App\Controllers\UserController;
@@ -35,12 +36,20 @@ $routes->get('/dokter/jadwal/edit/(:any)', [ManageJadwalPraktik::class,'edit'], 
 $routes->put('/dokter/jadwal/(:any)', [ManageJadwalPraktik::class,'update'], ['filter' => 'role:dokter']);
 $routes->delete('/dokter/jadwal/delete/(:any)', [ManageJadwalPraktik::class,'delete/$1'], ['filter' => 'role:dokter']);
 
+$routes->get('/dokter/jadwal/kunjungan', [ManageKunjungan::class, 'jadwalKunjunganDokter'] , ['filter' => 'role:dokter']);
+$routes->get('/dokter/kunjungan', [ManageKunjungan::class, 'KunjunganTerselesaikanDokter'] , ['filter' => 'role:dokter']);
+$routes->get('/dokter/kunjungan/edit/(:any)', [ManageKunjungan::class, 'editDokter'] , ['filter' => 'role:dokter']);
+$routes->put('/dokter/kunjungan/(:any)', [ManageKunjungan::class, 'updateDokter'] , ['filter' => 'role:dokter']);
+
 $routes->get('/admin/profile', [AdminController::class, 'index'], ['filter' => 'role:admin']);
 $routes->get('/admin/profile/edit', [AdminController::class, 'edit'], ['filter' => 'role:admin']);
 $routes->put('/admin/profile/edit/(:any)', [AdminController::class, 'updateProfile'], ['filter' => 'role:admin']);
 
+$routes->get('/admin/kunjungan', [ManageKunjungan::class, 'daftarKunjungan'] , ['filter' => 'role:admin']);
+$routes->delete('/admin/kunjungan/delete/(:any)', [ManageKunjungan::class, 'deleteAdmin/$1'] , ['filter' => 'role:admin']);
+
 $routes->get('/admin/jadwalpraktik', [ManageJadwalPraktik::class, 'showJadwal'], ['filter' => 'role:admin']);
-$routes->delete('/dokter/jadwalpraktik/delete/(:any)', [ManageJadwalPraktik::class,'delete/$1'], ['filter' => 'role:admin']);
+$routes->delete('/admin/jadwalpraktik/delete/(:any)', [ManageJadwalPraktik::class,'deleteAdmin/$1'], ['filter' => 'role:admin']);
 
 $routes->get('/users', [ManageUser::class, 'index'], ['filter' => 'role:admin']);
 $routes->get('/users/pasien/edit/(:any)', [ManageUser::class, 'editPasien'], ['filter' => 'role:admin']);
@@ -55,5 +64,13 @@ $routes->post('/users/reset/(:any)', [ManageUser::class, 'resetPassword/$1'], ['
 $routes->get('/pasien/profile', [DashPasienController::class, 'index'], ['filter' => 'role:pasien']);
 $routes->get('/pasien/profile/edit', [DashPasienController::class, 'edit'], ['filter' => 'role:pasien']);
 $routes->put('/pasien/profile/edit/(:any)', [DashPasienController::class, 'updateProfile'], ['filter' => 'role:pasien']);
-$routes->get('pasien/(:any)', [DashPasienController::class, 'show']);
 
+$routes->get('/pasien/jadwalpraktik', [ManageJadwalPraktik::class, 'showJadwalPasien'], ['filter' => 'role:pasien']);
+
+$routes->get('/pasien/jadwal/kunjungan', [ManageKunjungan::class, 'jadwalKunjungan'] , ['filter' => 'role:pasien']);
+$routes->get('/pasien/kunjungan', [ManageKunjungan::class, 'KunjunganTerselesaikanPasien'] , ['filter' => 'role:pasien']);
+$routes->get('/pasien/kunjungan/create', [ManageKunjungan::class, 'create'] , ['filter' => 'role:pasien']);
+$routes->post('/pasien/kunjungan/create', [ManageKunjungan::class, 'save'] , ['filter' => 'role:pasien']);
+$routes->get('/pasien/kunjungan/edit/(:any)', [ManageKunjungan::class, 'edit'] , ['filter' => 'role:pasien']);
+$routes->put('/pasien/kunjungan/(:any)', [ManageKunjungan::class, 'update'] , ['filter' => 'role:pasien']);
+$routes->delete('/pasien/kunjungan/delete/(:any)', [ManageKunjungan::class, 'delete/$1'] , ['filter' => 'role:pasien']);

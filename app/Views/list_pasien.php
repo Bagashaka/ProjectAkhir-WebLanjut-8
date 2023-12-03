@@ -14,9 +14,7 @@
                     <i class="fas fa-table me-1"></i>
                         Daftar Pasien yang terdaftar
                 </div>
-            <div class="card-body">
-                <a href="/dokter/rekamedis/create" class="btn btn-primary mb-2"><i class
-                class="fa fa-plus"></i>&nbsp;Tambah Data</a>
+            <div class="card-body">             
             <table  id="datatablesSimple">
                 <thead>
                     <tr>
@@ -26,7 +24,7 @@
                         <th>Nama</th>
                         <th> Tanggal Lahir</th>
                         <th>Kontak</th>
-                        <th>Validasi</th>                                           
+                        <th>Status</th>                                           
                     </tr>
                 </thead>
                 <tbody>

@@ -20,7 +20,7 @@ class ManageRekamedis extends BaseController
         $this->builder    = $this->db->table('rekam_medis');
     }
 
-    public function index()
+    public function index() 
     {
         $data_medis = $this->medisModel->getRekam();
 

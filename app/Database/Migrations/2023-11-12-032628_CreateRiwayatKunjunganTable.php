@@ -29,6 +29,7 @@ class CreateRiwayatKunjunganTable extends Migration
                 'type'=> 'INT',
                 'constraint'=> 5,
                 'unsigned'=> true,
+                'null' => true,
             ],
             'tanggal_kunjungan'=> [
                 'type'=> 'DATE',

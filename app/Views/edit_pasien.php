@@ -49,7 +49,7 @@
 									<input type="text" class="form-control" name="nomor_kontak" id="nomor_kontak"  aria-label="Nomor Kontak" required value="<?=$pasien->nomor_kontak?>">                                                          
                                 </div>
 								<div class="col-md-6">
-									<label for="validasi" class="col-sm-2 col-for m-label">Validasi</label>
+									<label for="validasi" class="col-sm-2 col-for m-label">Status</label>
 									<select name="validasi" class="form-control">
 										<option value="0">Belum Di Validasi</option>
 										<option value="1">Validasi</option>

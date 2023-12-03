@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class JadwalModel extends Model
 {
-    public function getJadwalPraktik($id = null)
+    public function getJadwalPraktik($id = null) 
     {
         if ($id != null) {
             return $this->select('jadwal_praktik_dokter.id, jadwal_praktik_dokter.id_dokter, jadwal_praktik_dokter.hari, jadwal_praktik_dokter.jam_mulai, jadwal_praktik_dokter.jam_selesai,jadwal_praktik_dokter.lokasi, users.nama_dokter')

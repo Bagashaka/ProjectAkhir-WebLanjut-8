@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MedisModel extends Model
+class MedisModel extends Model 
 {
 
     public function getRekam($id = null)
