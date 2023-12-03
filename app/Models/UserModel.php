@@ -32,7 +32,7 @@ class UserModel extends Model
         return $this->update($id, $data);
     }
 
-    public function getDokter($id = null){
+    public function getDokter($id = null){ 
         if($id != null){
             return $this->select('users.id, users.email, users.username,  users.nama_dokter, users.nomor_kontak, users.spesialisasi')
             ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')

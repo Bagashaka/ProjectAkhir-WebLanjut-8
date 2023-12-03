@@ -3,19 +3,93 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-
+ 
 class KunjunganModel extends Model
 {
     public function getKunjungan($id = null){
-        if ($id !=null) {
-            return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, pasien.nama_pasien, dokter.nama_dokter, rekam_medis.keluhan, rekam_medis.diagnosa, rekam_medis.resep_obat ')
-            ->join('pasien','pasien.id=riwayat_kunjungan.id_pasien')->join('dokter','dokter.id=riwayat_kunjungan.id_dokter')->join('rekam_medis', 'rekam_medis.id=riwayat_kunjungan.id_rekam_medis','left')->find($id);
+        if ($id == null) {
+            return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_dokter')
+            ->join('users','users.id=riwayat_kunjungan.id_dokter')                   
+            ->find($id);
         }
-        return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, pasien.nama_pasien, dokter.nama_dokter, rekam_medis.keluhan, rekam_medis.diagnosa, rekam_medis.resep_obat ')
-            ->join('pasien','pasien.id=riwayat_kunjungan.id_pasien')->join('dokter','dokter.id=riwayat_kunjungan.id_dokter')->join('rekam_medis', 'rekam_medis.id=riwayat_kunjungan.id_rekam_medis','left')->find();
+            return$this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_dokter')
+            ->join('users','users.id=riwayat_kunjungan.id_dokter')                   
+            ->findAll();
+
+    }
+    public function getKunjunganPasien($id = null)
+    {
+        if ($id != null) {
+            return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_dokter')
+            ->join('users','users.id=riwayat_kunjungan.id_dokter')
+            ->where('riwayat_kunjungan.validasi_kunjungan', 0)
+            ->where('riwayat_kunjungan.id_pasien', user_id())            
+            ->find($id);
+        }
+            return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_dokter')
+            ->join('users','users.id=riwayat_kunjungan.id_dokter')
+            ->where('riwayat_kunjungan.validasi_kunjungan', 0)
+            ->where('riwayat_kunjungan.id_pasien', user_id())
+            ->findAll();
     }
 
-    protected $DBGroup          = 'default';
+    public function getKunjunganDokter($id = null)
+    {
+        if ($id != null) {
+            return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_pasien')
+            ->join('users','users.id=riwayat_kunjungan.id_pasien')
+            ->where('riwayat_kunjungan.validasi_kunjungan', 0)
+            ->where('riwayat_kunjungan.id_dokter', user_id())            
+            ->find($id);
+        }
+        return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_pasien')
+        ->join('users','users.id=riwayat_kunjungan.id_pasien')
+        ->where('riwayat_kunjungan.validasi_kunjungan', 0)
+        ->where('riwayat_kunjungan.id_dokter', user_id())
+        ->findAll();
+    }
+
+
+    public function getKunjunganPasienTerselesaikan($id = null)
+    {
+        if ($id != null) {
+            return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_dokter, rekam_medis.keluhan,rekam_medis.diagnosa, rekam_medis.resep_obat')
+            ->join('users','users.id=riwayat_kunjungan.id_dokter')
+            ->join('rekam_medis', 'rekam_medis.id = riwayat_kunjungan.id_rekam_medis')
+            ->where('riwayat_kunjungan.validasi_kunjungan', 1)
+            ->where('riwayat_kunjungan.id_pasien', user_id())            
+            ->find($id);
+        }
+        return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_dokter, rekam_medis.keluhan,rekam_medis.diagnosa, rekam_medis.resep_obat')
+            ->join('users','users.id=riwayat_kunjungan.id_dokter')
+            ->join('rekam_medis', 'rekam_medis.id = riwayat_kunjungan.id_rekam_medis')
+            ->where('riwayat_kunjungan.validasi_kunjungan', 1)
+            ->where('riwayat_kunjungan.id_pasien', user_id())        
+            ->findAll();
+    }
+
+    public function getKunjunganDokterTerselesaikan($id = null)
+    {
+        if ($id != null) {
+            return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_pasien, rekam_medis.keluhan,rekam_medis.diagnosa, rekam_medis.resep_obat')
+            ->join('users','users.id=riwayat_kunjungan.id_pasien')
+            ->join('rekam_medis', 'rekam_medis.id = riwayat_kunjungan.id_rekam_medis')
+            ->where('riwayat_kunjungan.validasi_kunjungan', 1)
+            ->where('riwayat_kunjungan.id_dokter', user_id())            
+            ->find($id);
+        }
+        return $this->select('riwayat_kunjungan.id, riwayat_kunjungan.id_pasien, riwayat_kunjungan.id_dokter, riwayat_kunjungan.id_rekam_medis, riwayat_kunjungan.tanggal_kunjungan, riwayat_kunjungan.validasi_kunjungan, users.nama_pasien, rekam_medis.keluhan,rekam_medis.diagnosa, rekam_medis.resep_obat')
+            ->join('users','users.id=riwayat_kunjungan.id_pasien')
+            ->join('rekam_medis', 'rekam_medis.id = riwayat_kunjungan.id_rekam_medis')
+            ->where('riwayat_kunjungan.validasi_kunjungan', 1)
+            ->where('riwayat_kunjungan.id_dokter', user_id())        
+            ->findAll();
+    }
+
+    
+
+    
+
     protected $table            = 'riwayat_kunjungan';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;

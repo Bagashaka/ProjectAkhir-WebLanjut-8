@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary me-md-2" type="submit">Simpan</button>
+                    <button class="btn btn-primary me-md-2" type="submit">Perbarui</button>
                     <a class="btn btn-danger" href="<?= base_url('/dokter/rekamedis')?>">Batal</a>
                 </div>
             </form>

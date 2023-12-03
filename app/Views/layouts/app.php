@@ -43,7 +43,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?=base_url('/admin/kunjungan')?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Riwayat Kunjungan
                             </a>
@@ -155,7 +155,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Daftar Pasien
                             </a>
-        
+                            <a class="nav-link" href="<?=base_url('/dokter/kunjungan')?>">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Riwayat Kunjungan
+                            </a>
                             <a class="nav-link" href="<?= base_url('/dokter/rekamedis');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-kit-medical"></i></div>
                                 Rekam Medis Pasien
@@ -262,21 +265,21 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?=base_url('/pasien/jadwal/kunjungan')?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Jadwal Kunjungan
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?= base_url('/pasien/kunjungan') ?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-clock-rotate-left"></i></div>
                                 Riwayat Kunjungan
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?=base_url('/pasien/kunjungan/create')?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-pen-to-square"></i></div>
                                 Pendaftaran Kunjungan
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?=base_url('/pasien/jadwalpraktik')?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-kit-medical"></i></div>
-                                Kontak Darurat
+                                Jadwal Praktik Dokter
                             </a>
                             <div class="sb-sidenav-menu-heading">Account Page</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

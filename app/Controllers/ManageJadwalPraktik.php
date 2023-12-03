@@ -78,6 +78,12 @@ class ManageJadwalPraktik extends BaseController
 
         return redirect()->to('/dokter/jadwal');
     }
+    public function delete($id)
+    {
+        $this->jadwalModel->delete($id);
+
+        return redirect()->to('/dokter/jadwal');
+    }
 
     public function showJadwal(){
         $jadwal = $this->jadwalModel->getJadwal();
@@ -91,10 +97,22 @@ class ManageJadwalPraktik extends BaseController
         
     }
 
-    public function delete($id)
+    public function showJadwalPasien(){
+        $jadwal = $this->jadwalModel->getJadwal();
+
+        $data = [
+            'title' => "Manajemen Jadwal Praktik",
+            'jadwal' => $jadwal,
+        ];
+
+        return view('list_jadwal_pasien', $data);
+        
+    }
+
+    public function deleteAdmin($id)
     {
         $this->jadwalModel->delete($id);
 
-        return redirect()->to('/dokter/jadwal');
+        return redirect()->to('/admin/jadwalpraktik');
     }
 }

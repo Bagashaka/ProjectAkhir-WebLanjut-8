@@ -167,7 +167,7 @@
 								</div>
 								<!-- Validasi -->
 								<div class="col-md-6">
-									<label class="form-label">Validasi *</label>
+									<label class="form-label">Status *</label>
 									<?php
 										$statusValidasi = ($pasien->validasi == 0) ? 'Belum Tervalidasi' : 'Tervalidasi';
 									?>
