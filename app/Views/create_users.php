@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
             <!-- Form Data -->
-            <form action="/users/create" method="POST">
+            <form action="<?= base_url('/users/create') ?>" method="POST">
                 <?= csrf_field() ?>
                 <div class="mb-3 row">
                     <label for="email" class="col-sm-2 col-for m-label">Email</label>

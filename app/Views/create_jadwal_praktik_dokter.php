@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
             <!-- Form Data -->
-            <form action="/dokter/jadwal/create" method="POST">
+            <form action="<?=base_url('/dokter/jadwal/create')?>" method="POST">
                 <?= csrf_field() ?>
 
                 <div class="mb-3 row">

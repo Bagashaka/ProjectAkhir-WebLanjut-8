@@ -38,7 +38,7 @@
                         <td><?= $jad['jam_selesai'] ?></td>
                         <td><?= $jad['lokasi']?></td>
                     <td>
-                        <form action="/admin/jadwalpraktik/delete/<?=$jad['id']?>" method="post" class="d-inline">
+                        <form action="<?=base_url('/admin/jadwalpraktik/delete/' . $jad['id']) ?>" method="post" class="d-inline">
                             <?= csrf_field() ?>
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger" role="button" onclick="return confirm('Apakah anda yakin?')">

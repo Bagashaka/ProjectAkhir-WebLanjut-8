@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="card-footer text-center py-3">
 <?php if ($config->allowRegistration) : ?>
-					                <p><a href="<?= url_to('register') ?>"><?=lang('Auth.needAnAccount')?></a></p>
+					                <p><a href="<?= base_url('register') ?>"><?=lang('Auth.needAnAccount')?></a></p>
 <?php endif; ?>
                                 </div>
                             </div>

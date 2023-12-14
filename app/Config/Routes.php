@@ -5,16 +5,25 @@ use App\Controllers\Home;
 use App\Controllers\PasienController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\AdminController;
+use App\Controllers\AuthController;
+use App\Controllers\JadwalPrak;
 use App\Controllers\ManageJadwalPraktik;
 use App\Controllers\ManageKunjungan;
 use App\Controllers\ManageUser;
 use App\Controllers\ManageRekamedis;
+use App\Controllers\PenyakitController;
 use App\Controllers\UserController;
  
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', [Home::class,'index']); 
+$routes->get('/', [Home::class,'index']);
+$routes->get('/login', [AuthController::class,'login']);
+$routes->get('/register', [AuthController::class,'register']);
+
+
+$routes->get('/cari/penyakit', [PenyakitController::class,'index']); 
+$routes->post('/cari/penyakit', [PenyakitController::class,'proses']); 
 
 $routes->get('/dokter/profile', [UserController::class,'index'], ['filter' => 'role:dokter']);
 $routes->get('/dokter/profile/edit', [UserController::class, 'edit'], ['filter' => 'role:dokter']);
@@ -28,6 +37,12 @@ $routes->post('/dokter/rekamedis/create', [ManageRekamedis::class,'save'], ['fil
 $routes->get('/dokter/rekamedis/edit/(:any)', [ManageRekamedis::class,'edit'], ['filter' => 'role:dokter']);
 $routes->put('/dokter/rekamedis/(:any)', [ManageRekamedis::class,'update'], ['filter' => 'role:dokter']);
 $routes->delete('/dokter/rekamedis/delete/(:any)', [ManageRekamedis::class,'delete/$1'], ['filter' => 'role:dokter']);
+
+$routes->get('/dokter/jad', [JadwalPrak::class, 'index']);
+$routes->post('/dokter/jad', [JadwalPrak::class, 'create']);
+$routes->put('/dokter/jad/(:any)', [JadwalPrak::class, 'update/$1']);
+$routes->delete('/dokter/jad/(:any)', [JadwalPrak::class, 'delete/$1']);
+$routes->get('/dokter/jad/(:any)', [JadwalPrak::class, 'show/$1']);
 
 $routes->get('/dokter/jadwal', [ManageJadwalPraktik::class,'index'], ['filter' => 'role:dokter']);
 $routes->get('/dokter/jadwal/create', [ManageJadwalPraktik::class,'create'], ['filter' => 'role:dokter']);

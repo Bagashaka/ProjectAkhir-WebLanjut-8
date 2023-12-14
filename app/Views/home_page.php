@@ -14,7 +14,7 @@
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Daftar Kunjungan</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="<?=base_url('/admin/kunjungan')?>">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
