@@ -17,7 +17,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">RSUD Tadika Mesra</a>
+            <a class="navbar-brand ps-3"><i class="fas fa-kit-medical"></i>RSUD Tadika Mesra</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar-->
@@ -41,7 +41,7 @@
                             <div class="sb-sidenav-menu-heading">Menu</div>
                             <a class="nav-link" href="<?= base_url('/');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
+                                Dashboard 
                             </a>
                             <a class="nav-link" href="<?=base_url('/admin/kunjungan')?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -122,7 +122,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-primary bg-primary">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html"><i class="fas fa-kit-medical"></i>  RSUD Tadika Mesra</a>
+            <a class="navbar-brand ps-3"><i class="fas fa-kit-medical"></i>  RSUD Tadika Mesra</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -225,7 +225,7 @@
 <!-- PASIEN -->
 <?php elseif(in_groups('pasien')): ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -240,7 +240,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">RSUD Tadika Mesra</a>
+            <a class="navbar-brand ps-3" ><i class="fas fa-kit-medical"></i>RSUD Tadika Mesra</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>          
             <!-- Navbar-->
@@ -264,6 +264,10 @@
                             <a class="nav-link" href="<?= base_url('/');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
+                            </a>
+                            <a class="nav-link" href="<?=base_url('/cari/penyakit')?>">
+                                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-marker"></i></div>
+                                Cek Penyakit 
                             </a>
                             <a class="nav-link" href="<?=base_url('/pasien/jadwal/kunjungan')?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>

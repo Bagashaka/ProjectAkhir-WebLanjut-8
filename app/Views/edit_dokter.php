@@ -9,7 +9,7 @@
 				<hr>
 			</div>
 			<!-- Form START -->
-            <form action="<?=base_url('/users/dokter/'. $dokter->id)?>" method="POST"  enctype="multipart/form-data">
+            <form action="<?= base_url('/users/dokter/'. $dokter->id) ?>" method="POST"  enctype="multipart/form-data">
             <?= csrf_field() ?>
 			<input type="hidden" name="_method" value="PUT">
 				<div class="row mb-1 gx-5">

@@ -17,7 +17,7 @@ class ManageJadwalPraktik extends BaseController
         $this->userModel = new UserModel();
         $this->jadwalModel = new JadwalModel();
     }
-
+ 
     public function index()
     {
         $jadwal = $this->jadwalModel->getJadwalPraktik();

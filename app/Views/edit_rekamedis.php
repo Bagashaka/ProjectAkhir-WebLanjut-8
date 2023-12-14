@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
             <!-- Form Data -->
-            <form action="<?=base_url('/dokter/rekamedis/'.$medis['id'])?>" method="POST" enctype="multipart/form-data">
+            <form action="<?= base_url('/dokter/rekamedis/'.$medis['id']) ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field() ?>
                 <input type="hidden" name="_method" value="PUT">
 

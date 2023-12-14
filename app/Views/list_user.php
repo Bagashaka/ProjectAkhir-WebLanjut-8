@@ -37,13 +37,13 @@
                     <td><?= $user->username?></td>
                     <td><?= $user->name?></td>
                     <td class="center">
-                        <form action="/users/reset/<?=$user->id?>" method="post" class="d-inline">
+                        <form action="<?= base_url('/users/reset/'. $user->id) ?>" method="post" class="d-inline">
                             <?= csrf_field() ?>                    
                             <button type="submit" class="btn btn-warning" role="button" onclick="return confirm('Apakah anda yakin?')">
                             Reset</button>
                         </form>
 
-                        <form action="/users/delete/<?=$user->id?>" method="post" class="d-inline">
+                        <form action="<?= base_url('/users/delete/' . $user->id) ?>" method="post" class="d-inline">
                             <?= csrf_field() ?>
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger" role="button" onclick="return confirm('Apakah anda yakin?')">

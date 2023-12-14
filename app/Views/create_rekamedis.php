@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
             <!-- Form Data -->
-            <form action="/dokter/rekamedis/create" method="POST">
+            <form action="<?= base_url('/dokter/rekamedis/create')?>" method="POST">
                 <?= csrf_field() ?>
                 <div class="mb-3 row">
                     <label for="keluhan" class="col-sm-2 col-for m-label">Keluhan</label>

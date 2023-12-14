@@ -56,8 +56,8 @@ class Home extends BaseController
         {
         return view('landing_page');
         }
-
-         
     }
+
+ 
 
 }
